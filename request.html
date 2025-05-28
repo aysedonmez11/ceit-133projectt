@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ride Request</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #23bfad;
+        }
+
+        h1 {
+            color: #444;
+        }
+
+        form {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #03c6bca7;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .entry {
+            background: #eaffea;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ride Request Form</h1>
+
+    <form id="requestForm">
+        <label>Location:
+            <input type="text" name="location" required>
+        </label>
+        <label>Date:
+            <input type="date" name="date" required>
+        </label>
+        <label>Time:
+            <input type="time" name="time" required>
+        </label>
+        <label>Number of People:
+            <input type="number" name="people" min="1" required>
+        </label>
+        <label>Notes:
+            <textarea name="notes" rows="3"></textarea>
+        </label>
+        <button type="submit">Submit Ride Request</button>
+    </form>
+
+    <h2>Submitted Ride Requests</h2>
+    <div id="requestList"></div>
+
+    <script>
+        const form = document.getElementById('requestForm');
+        const list = document.getElementById('requestList');
+
+        // Load saved requests
+        const requests = JSON.parse(localStorage.getItem('rideRequests') || '[]');
+        requests.forEach(displayRequest);
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const data = {
+                location: form.location.value,
+                date: form.date.value,
+                time: form.time.value,
+                people: form.people.value,
+                notes: form.notes.value
+            };
+
+            requests.push(data);
+            localStorage.setItem('rideRequests', JSON.stringify(requests));
+            displayRequest(data);
+
+            form.reset();
+        });
+
+        function displayRequest(request) {
+            const div = document.createElement('div');
+            div.className = 'entry';
+            div.innerHTML = `
+        <strong>Location:</strong> ${request.location}<br>
+        <strong>Date:</strong> ${request.date}<br>
+        <strong>Time:</strong> ${request.time}<br>
+        <strong>People:</strong> ${request.people}<br>
+        <strong>Notes:</strong> ${request.notes}
+      `;
+            list.appendChild(div);
+        }
+    </script>
+</body>
+
+</html>

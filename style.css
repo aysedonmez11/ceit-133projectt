@@ -1,58 +1,72 @@
+/* Genel stiller */
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background-color: #f4f6f9;
-  color: #333;
-}
-header {
-  background-color: #3a7bd5;
-  color: white;
-  padding: 20px;
-  text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    background-color: #f2f2f2;
+    color: #333;
 }
 
-.logo {
-  width: 80px;
-  margin-bottom: 10px;
+h1 {
+    color: #2c3e50;
 }
 
-.container {
-  padding: 20px;
-  max-width: 800px;
-  margin: auto;
+h2 {
+    margin-top: 40px;
+    color: #34495e;
 }
 
-
-.info-card, .faq, .form-section {
-  background: white;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+form {
+    background-color: #07efad;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
 }
 
-form label {
-  display: block;
-  margin: 10px 0 5px;
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
 }
 
-form input, form textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
 }
 
-form button {
-  background-color: #3a7bd5;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  margin-top: 10px;
-  cursor: pointer;
-  border-radius: 4px;
+textarea {
+    resize: vertical;
 }
 
-form button:hover {
-  background-color: #345f9e;
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #db9534;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Gönderi kartları */
+.entry {
+    background-color: #0a5e84;
+    padding: 15px;
+    border-left: 5px solid #3498db;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.entry strong {
+    color: #2c3e50;
 }
